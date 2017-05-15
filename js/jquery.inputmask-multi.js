@@ -10,7 +10,7 @@
 (function ($)
 {
 	//Helper Functions
-	var caret = function(_iBegin, _iEnd)
+	var caret = function (_iBegin, _iEnd)
 		{
 			_iBegin = parseInt(_iBegin);
 			_iEnd = parseInt(_iEnd) || _iBegin;
@@ -52,17 +52,23 @@
 				};
 			}
 		},
-		keys = Object.keys || function(obj) {
-			if (obj !== Object(obj)) {
+		keys = Object.keys || function (obj)
+		{
+			if (obj !== Object(obj))
+			{
 				throw new TypeError('Invalid object');
 			}
+
 			var keys = [];
-			for (var key in obj) {
+
+			for (var key in obj)
+			{
 				keys[keys.length] = key;
 			}
+
 			return keys;
 		},
-		maskMatch = function(text)
+		maskMatch = function (text)
 		{
 			var maskOpts = this.inputmasks.options,
 				mtxt = "";
@@ -120,34 +126,48 @@
 			return false;
 		};
 
-	var caretApply = function(oldMask, newMask, oldPos) {
-		var maskOpts = this.inputmasks.options;
-		if (!oldMask) {
-			return 0;
-		}
-		var pos = 0, startPos = 0;
-		for (; pos < oldPos.begin; pos++) {
-			if (oldMask.charAt(pos) == maskOpts.replace) {
+	var caretApply = function (oldMask, newMask, oldPos)
+	{
+		if (!oldMask) return 0;
+
+		var maskOpts = this.inputmasks.options,
+			pos = 0,
+			startPos = 0;
+
+		for (; pos < oldPos.begin; pos++)
+		{
+			if (oldMask.charAt(pos) == maskOpts.replace)
+			{
 				startPos++;
 			}
 		}
+
 		var endPos = 0;
-		for (; pos < oldPos.end; pos++) {
-			if (oldMask.charAt(pos) == maskOpts.replace) {
+		for (; pos < oldPos.end; pos++)
+		{
+			if (oldMask.charAt(pos) == maskOpts.replace)
+			{
 				endPos++;
 			}
 		}
-		for (pos = 0; (pos < newMask.length && (startPos > 0 || newMask.charAt(pos) != maskOpts.replace)); pos++) {
-			if (newMask.charAt(pos) == maskOpts.replace) {
+
+		for (pos = 0; (pos < newMask.length && (startPos > 0 || newMask.charAt(pos) != maskOpts.replace)); pos++)
+		{
+			if (newMask.charAt(pos) == maskOpts.replace)
+			{
 				startPos--;
 			}
 		}
+
 		startPos = pos;
-		for (; (pos < newMask.length && endPos > 0); pos++) {
-			if (newMask.charAt(pos) == maskOpts.replace) {
+		for (; (pos < newMask.length && endPos > 0); pos++)
+		{
+			if (newMask.charAt(pos) == maskOpts.replace)
+			{
 				endPos--;
 			}
 		}
+
 		endPos = pos;
 		return {
 			begin: startPos,
@@ -155,7 +175,8 @@
 		};
 	}
 
-	var maskUnbind = function() {
+	var maskUnbind = function ()
+	{
 		$(this).off(".inputmasks");
 	}
 

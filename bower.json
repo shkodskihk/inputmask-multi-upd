@@ -1,5 +1,5 @@
 {
-	"name": "inputmask-multi-upd",
+	"name": "inputmask-update",
 	"description": "Inputmask Multi is a plugin which allows to select a mask of input basing on the beginning of entered data (such as an international phone number)",
 	"version": "0.0.1",
 	"main": "js/jquery.inputmask-multi.js",
